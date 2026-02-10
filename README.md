@@ -72,12 +72,30 @@ npm start
 
 ## Writing Tests
 
-Tests are written using Jest and should be placed in the `src/` directory with the `.test.ts` extension. 
+Tests are written using Jest and can be organized using any of these standard patterns:
+
+1. **Co-located tests**: Place test files next to your source files with `.test.ts` or `.spec.ts` extension
+   - Example: `src/index.test.ts` alongside `src/index.ts`
+
+2. **`__tests__` folder in src**: Organize tests in a dedicated `__tests__` folder inside `src/`
+   - Example: `src/__tests__/myFeature.test.ts`
+
+3. **Root-level `__tests__` folder**: Place tests in a `__tests__` folder at the project root
+   - Example: `__tests__/integration.test.ts`
+
+All patterns are supported and tests will be discovered automatically.
 
 **Important**: When using ESM, import statements must include the `.js` extension (even though the source files are `.ts`):
 
 ```typescript
-import { add } from './index.js';  // Note the .js extension
+// In src/index.test.ts (co-located)
+import { add } from './index.js';
+
+// In src/__tests__/feature.test.ts
+import { add } from '../index.js';
+
+// In __tests__/integration.test.ts (root level)
+import { add } from '../src/index.js';
 
 describe('add function', () => {
   it('should add two numbers correctly', () => {
@@ -105,11 +123,13 @@ Configured for ESM output:
 
 ### Jest (jest.config.js)
 
-Configured for ESM:
+Configured for ESM with flexible test locations:
 - TypeScript support via ts-jest with ESM preset
 - Node.js test environment
-- Test files: `*.test.ts` or `*.spec.ts`
-- Coverage collection from `src/` directory
+- Test files: `*.test.ts` or `*.spec.ts` anywhere in the project
+- Supports `__tests__` folders at any level (root or nested)
+- Supports co-located tests alongside source files
+- Coverage collection from `src/` directory only
 - `extensionsToTreatAsEsm` for `.ts` files
 - Module name mapper for `.js` imports
 
