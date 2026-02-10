@@ -1,4 +1,4 @@
-import { add, subtract } from './index';
+import { add, subtract } from './index.js';
 
 describe('Math Functions', () => {
   describe('add', () => {

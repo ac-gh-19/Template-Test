@@ -30,6 +30,7 @@ export function main(): void {
 }
 
 // Run the main function if this file is executed directly
-if (require.main === module) {
+// ESM way to check if module is main
+if (import.meta.url === `file://${process.argv[1]}`) {
   main();
 }
