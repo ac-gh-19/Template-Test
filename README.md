@@ -98,7 +98,8 @@ npm test
 
 Configured for ESM output:
 - Target: ES2022
-- Module: ES2022 (ESM)
+- Module: NodeNext (Node.js ESM)
+- Module Resolution: NodeNext
 - Strict type checking enabled
 - Source files in `src/`, output to `dist/`
 
