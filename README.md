@@ -127,7 +127,7 @@ This template uses ES Modules (ESM), the modern JavaScript module standard. Key 
 - Package.json has `"type": "module"`
 - Import statements require `.js` extensions (TypeScript convention)
 - Use `import/export` instead of `require/module.exports`
-- To check if module is main: `import.meta.url === \`file://\${process.argv[1]}\``
+- To check if module is main: Use `import.meta.url` comparison with file path
 
 ## License
 
